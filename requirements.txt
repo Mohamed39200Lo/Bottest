@@ -1,1 +1,2 @@
 pyTelegramBotAPI ==4.16.1
+gunicorn ==21.2.0
