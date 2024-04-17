@@ -1,7 +1,7 @@
 import telebot
 import subprocess
 import gunicorn
-bot = telebot.TeleBot('6502701693:AAEVzcAjLSnC23SkC8nSMWKUesYWTYxPTWo')
+bot = telebot.TeleBot('5421940383:AAFbDIqS8cX0taSfUFbuWjlDSqBo1_AfeEk')
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
