@@ -1,7 +1,14 @@
+from flask import Flask
 import telebot
-import subprocess
-import gunicorn
-bot = telebot.TeleBot('5421940383:AAFbDIqS8cX0taSfUFbuWjlDSqBo1_AfeEk')
+from threading import Thread
+
+
+bot = telebot.TeleBot("5421940383:AAFbDIqS8cX0taSfUFbuWjlDSqBo1_AfeEk")
+app = Flask(__name__)
+
+@app.route('/')
+def ping():
+    return "PONG !, HELLO FROM MTC"
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -15,5 +22,15 @@ def reply_to_messages(message):
         bot.reply_to(message, "الحمد لله بخير")
     elif message.text == "من أي بلد أنت":
         bot.reply_to(message, "مصر")
-subprocess.Popen(["gunicorn", "app:app", "-b", "0.0.0.0:8080"])
-bot.polling()
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def server():
+    t = Thread(target=run)
+    t.start()
+
+if __name__ == "__main__":
+    server()
+    bot.polling()
+    
