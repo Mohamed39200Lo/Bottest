@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
-from app import server
+#from app import server
 from sys import stderr
 
 # رمز API الخاص بالبوت الذي حصلت عليه من BotFather
