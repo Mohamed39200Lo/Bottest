@@ -5,6 +5,8 @@ import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 #from app import server
 from sys import stderr
+from threading import Thread
+from flask import Flask
 
 # رمز API الخاص بالبوت الذي حصلت عليه من BotFather
 #API_TOKEN = '5785640650:AAFznvr_ulgTa45SZrJoHGiafw_FMdFMeBA'
