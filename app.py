@@ -132,4 +132,5 @@ if __name__ == "__main__":
     server()
     while True:
         check_availability()
-        time.sleep(60)
+        print(5)
+        time.sleep(15)
