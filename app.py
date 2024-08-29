@@ -94,7 +94,7 @@ def check_availability():
             is_available = availability is None
             product_statuses[name] = {'available': is_available, 'link': link, 'image_url': image_url}
 
-            if is_available and name not in notified_products:
+            if not is_available and name not in notified_products:
                 print(1)
                 markup = InlineKeyboardMarkup()
                 markup.row_width = 2
