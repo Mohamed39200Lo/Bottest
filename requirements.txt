@@ -6,3 +6,4 @@ requests ==2.31.0
 beautifulsoup4 ==4.12.3
 chromium==0.0.0
 chromedriver==2.24.1
+selenium==4.1.0
