@@ -2,18 +2,24 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import telebot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
+
 #from app import server
 from sys import stderr
 from threading import Thread
 from flask import Flask
 
-# رمز API الخاص بالبوت الذي حصلت عليه من BotFather
-#API_TOKEN = '5785640650:AAFznvr_ulgTa45SZrJoHGiafw_FMdFMeBA'
+import cloudscraper
+from bs4 import BeautifulSoup
 
-#bot = telebot.TeleBot(API_TOKEN)
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+#from app import server
+import requests
+#from flask import Flask, request
 
-bot = telebot.TeleBot("7433644739:AAEVxiKNqqjdwwCuoAOpxkW0WRpWcjEpc1c")
+API_TOKEN = '7425541614:AAGhkWzA1uM6QWksUvlUC2slqLGOSSEJvbk'
+bot = telebot.TeleBot(API_TOKEN)
+
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -21,7 +27,9 @@ def ping():
     return "PONG !, HELLO FROM MTC"
     
 
-chat_id = "-1002037612532"  # ضع هنا معرف المحادثة الخاصة بك
+
+
+chat_id = "-1002037612532"  
 
 url = "https://www.dzrt.com/ar/our-products.html"
 notified_products = set()
@@ -61,7 +69,7 @@ def update_pinned_message(products):
                         print(f"No change in the message content: {e}", file=stderr)
                     else:
                         print(f"Error editing message: {e}", file=stderr)
-                        pinned_message_id = None  # Reset pinned message ID if there's an error other than "message is not modified"
+                        pinned_message_id = None  
             if not pinned_message_id:
                 sent_message = bot.send_message(chat_id, new_message_content, parse_mode='Markdown')
                 bot.pin_chat_message(chat_id, sent_message.message_id)
@@ -72,8 +80,17 @@ def update_pinned_message(products):
 
 def check_availability():
     try:
-        response = requests.get(url)
+        # استخدام cloudscraper بدلاً من requests
+        scraper = cloudscraper.create_scraper()
+
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+            "Accept-Language": "en-US,en;q=0.9",
+        }
+
+        response = scraper.get(url, headers=headers)
         response.raise_for_status()  # Raise an HTTPError for bad responses
+
         soup = BeautifulSoup(response.content, 'html.parser')
 
         products = soup.find_all('li', class_='product-item')
@@ -84,10 +101,7 @@ def check_availability():
             name = product.find('a', class_='product-item-link').text.strip()
             link = product.find('a', class_='product-item-link')['href']
             image_tag = product.find('img', class_='product-image-photo')
-              # URL الصورة
             image_url = image_tag['data-src'] if image_tag and 'data-src' in image_tag.attrs else "https://assets.dzrt.com/media/wysiwyg/Home-New/dzrt-hand-product-can-ar.png"
-
-            # استخدم get لتجنب الخطأ إذا لم تكن الخاصية موجودة
 
             availability = product.find('div', class_='stock unavailable')
 
@@ -95,12 +109,12 @@ def check_availability():
             product_statuses[name] = {'available': is_available, 'link': link, 'image_url': image_url}
 
             if not is_available and name not in notified_products:
-                print(1)
+                print(6)
                 markup = InlineKeyboardMarkup()
                 markup.row_width = 2
                 markup.add(
                     InlineKeyboardButton("عرض المنتج 🛍️", url=link),
-                    InlineKeyboardButton("تسجيل الدخول", url="https://www.dzrt.com/ar/customer/account/login/referer/aHR0cHM6Ly93d3cuZHpydC5jb20vYXIvc3BpY3k-temVzdC5odG1s/")
+                    InlineKeyboardButton("تسجيل الدخول", url="https://www.dzrt.com/ar/customer/account/login/referer/aHR0cHM6Ly93d3cuZHpydC5jb20vYXIvc3BpY3kttemVzdC5odG1s/")
                 )
                 markup.add(
                     InlineKeyboardButton("سلة المنتجات 🗑️", url="https://www.dzrt.com/ar/checkout/cart/")
@@ -119,6 +133,7 @@ def check_availability():
     except Exception as e:
         print(f"Unexpected error during availability check: {e}")
 
+
 def run():
     app.run(host='0.0.0.0', port=8080)
 
@@ -133,4 +148,4 @@ if __name__ == "__main__":
     while True:
         check_availability()
         print(5)
-        time.sleep(15)
+        time.sleep(45)
