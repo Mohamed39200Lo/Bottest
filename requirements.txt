@@ -1,3 +1,4 @@
+cloudscraper==1.2.71
 pyTelegramBotAPI ==4.16.1
 gunicorn ==21.2.0
 Flask==3.0.3
