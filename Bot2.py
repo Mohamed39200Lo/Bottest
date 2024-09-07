@@ -36,6 +36,22 @@ chrome_options.add_argument("--headless")  # Run in headless mode
 chrome_options.add_argument("--disable-gpu")
 chrome_options.add_argument("--remote-debugging-port=9222")
 
+import os
+
+def save_and_send_page_source():
+    # Save the page source to a file
+    file_path = "page_source.html"
+    with open(file_path, 'w') as f:
+        f.write(driver.page_source)
+    
+    # Check if the file exists and send it via the bot
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as file:
+            bot.send_document(chat_id, file)
+        
+        # Optionally, remove the file after sending
+        os.remove(file_path)
+
 
 
 driver = webdriver.Chrome( options=chrome_options)
@@ -133,11 +149,13 @@ def check_availability():
                 notified_products.remove(name)
 
         update_pinned_message(product_statuses)
+        save_and_send_page_source()
 
     except requests.exceptions.RequestException as e:
         print(f"Error during HTTP request: {e}", file=stderr)
 
     except Exception as e:
+        save_and_send_page_source()
         print(f"Unexpected error during availability check: {e}")
 
 def run():
