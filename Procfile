@@ -1,2 +1,2 @@
-worker: python Bot2.py
+worker: python app.py
 
