@@ -29,7 +29,7 @@ def ping():
 
 
 
-chat_id = "-1002037612532"  
+chat_id = "-1002039608675"  
 
 url = "https://www.dzrt.com/ar/our-products.html"
 notified_products = set()
@@ -148,4 +148,4 @@ if __name__ == "__main__":
     while True:
         check_availability()
         print(5)
-        time.sleep(45)
+        time.sleep(20)
