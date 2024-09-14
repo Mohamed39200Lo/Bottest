@@ -126,8 +126,7 @@ def check_availability():
             elif not is_available and name in notified_products:
                 notification_message = f"❌ المنتج {name} لم يعد متوفرًا!"
                 bot.send_photo(chat_id, image_url, caption=notification_message)
-                bot.send_message(chat_id, notification_message)
-               
+                
                 notified_products.remove(name)
 
         update_pinned_message(product_statuses)
