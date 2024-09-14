@@ -124,9 +124,15 @@ def check_availability():
                 bot.send_photo(chat_id, image_url, caption=caption, reply_markup=markup, parse_mode='Markdown')
                 notified_products.add(name)
             elif not is_available and name in notified_products:
-                notification_message = f"❌ المنتج {name} لم يعد متوفرًا!"
-                bot.send_photo(chat_id, image_url, caption=notification_message)
-                
+                markup = InlineKeyboardMarkup()
+                markup.row_width = 2
+                markup.add(
+                    InlineKeyboardButton("عرض المنتج 🛍️", url=link),
+                    InlineKeyboardButton("تسجيل الدخول", url="https://www.dzrt.com/ar/customer/account/login/referer/aHR0cHM6Ly93d3cuZHpydC5jb20vYXIvc3BpY3k-temVzdC5odG1s/")
+                )
+                notification_message = f" المنتج {name} لم يعد متوفرًا!  ❌"
+                bot.send_photo(chat_id, image_url, caption=notification_message,reply_markup=markup)
+                                
                 notified_products.remove(name)
 
         update_pinned_message(product_statuses)
