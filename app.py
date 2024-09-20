@@ -89,10 +89,11 @@ def check_availability():
             if name_tag:
                 name = name_tag.get_text(strip=True)
 
-            link_tag = product.find('a', class_='order-1 lg:order-1')
-            if link_tag:
+            link_tag = product.find('a')
+            if link_tag and 'href' in link_tag.attrs:
                 link = "https://www.dzrt.com" + link_tag['href']
-
+            else:
+                print("No link found)
             status_tag = product.find('span', class_='absolute right-0 top-0 px-1.5 font-semibold uppercase text-white shadow-xs bg-custom-orange-700')
             is_available = status_tag is None
 
