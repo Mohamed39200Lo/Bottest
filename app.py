@@ -8,7 +8,7 @@ from flask import Flask
 import cloudscraper
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-chat_ids = ["-1002039608675", "-1002443500870"] 
+chat_ids = ["-1002222132008", "-1002443500870"] 
 API_TOKEN = '7425541614:AAGhkWzA1uM6QWksUvlUC2slqLGOSSEJvbk'
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -114,7 +114,10 @@ def check_availability():
                     InlineKeyboardButton("تسجيل الدخول", url="https://www.dzrt.com/ar-sa/login")
                 )
                 markup.add(
-                    InlineKeyboardButton("سلة المنتجات🛒", url="https://www.dzrt.com/ar-sa/cart"))
+                    InlineKeyboardButton("سلة المنتجات🛒", url="https://www.dzrt.com/ar-sa/cart")
+                    InlineKeyboardButton("صفحة الدفع 💳", url="https://www.dzrt.com/ar-sa/cart")
+                
+                )
                 caption = f"تم توافر المنتج {name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
                 for chat_id in chat_ids:
                     bot.send_photo(chat_id, image_url, caption=caption, reply_markup=markup, parse_mode='Markdown')
