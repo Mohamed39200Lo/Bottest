@@ -114,7 +114,7 @@ def check_availability():
                     InlineKeyboardButton("تسجيل الدخول", url="https://www.dzrt.com/ar-sa/login")
                 )
                 markup.add(
-                    InlineKeyboardButton("سلة المنتجات🛒", url="https://www.dzrt.com/ar-sa/cart")
+                    InlineKeyboardButton("سلة المنتجات🛒", url="https://www.dzrt.com/ar-sa/cart"),
                     InlineKeyboardButton("صفحة الدفع 💳", url="https://www.dzrt.com/ar-sa/cart")
                 
                 )
