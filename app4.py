@@ -9,7 +9,7 @@ import cloudscraper
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 chat_ids = ["-1002222132008"] 
-API_TOKEN = '7367224669:AAHwAVGEfFZ-JjVYeV0mAts4mKaWaCYp0Bo'
+API_TOKEN = '5785640650:AAFznvr_ulgTa45SZrJoHGiafw_FMdFMeBA'
 bot = telebot.TeleBot(API_TOKEN)
 
 app = Flask(__name__)
