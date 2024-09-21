@@ -17,7 +17,7 @@ app = Flask(__name__)
 def ping():
     return "PONG !, HELLO FROM MTC"
 
-chat_id = "-1002037612532"  
+chat_id = "-1002443500870"  
 url = "https://www.dzrt.com/ar-sa/products"
 notified_products = set()
 current_message_content = ""
