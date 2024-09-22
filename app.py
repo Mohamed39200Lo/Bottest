@@ -16,7 +16,8 @@ app = Flask(__name__)
 @app.route('/')
 def ping():
     return "PONG !, HELLO FROM MTC"
-
+    
+chat_ids = ["-1002222132008","-1002443500870"] 
 chat_id = "-1002443500870"  
 url = "https://www.dzrt.com/ar-sa/products"
 notified_products = set()
@@ -157,8 +158,11 @@ def check_availability():
                     
                     )
                 caption = f"تم توافر المنتج للجميع 🌀{name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
-                bot.send_photo(chat_id, image_url, caption=caption, reply_markup=markup, parse_mode='Markdown')
+                #bot.send_photo(chat_id, image_url, caption=caption, reply_markup=markup, parse_mode='Markdown')
                 #time.sleep(10)
+                for chat_id in chat_ids:
+                    bot.send_photo(chat_id, image_url, caption=caption, reply_markup=markup, parse_mode='Markdown')
+              
                 notified_products.add(name)
             elif not is_available and name in notified_products:
                 notified_products.remove(name)
