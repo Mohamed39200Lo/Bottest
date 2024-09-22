@@ -8,7 +8,7 @@ from flask import Flask
 import cloudscraper
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-chat_ids = ["-1002222132008"] 
+chat_ids = ["-1002222132008","-1002443500870"] 
 API_TOKEN = '5785640650:AAFznvr_ulgTa45SZrJoHGiafw_FMdFMeBA'
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -18,7 +18,7 @@ app = Flask(__name__)
 def ping():
     return "PONG !, HELLO FROM MTC"
 
-chat_id = "-1002222132008"  
+chat_id = "-1002443500870"  
 url = "https://www.dzrt.com/ar-sa/products"
 notified_products = set()
 current_message_content = ""
