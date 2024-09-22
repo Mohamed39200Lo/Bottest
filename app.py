@@ -155,7 +155,8 @@ def check_availability():
                 )
                 markup.add(
                     InlineKeyboardButton("سلة المنتجات🛒", url="https://www.dzrt.com/ar-sa/cart"),                   
-                    
+                    InlineKeyboardButton("صفحة الدفع 💳", url="https://www.dzrt.com/ar-sa/cart")
+                
                     )
                 caption = f"تم توافر المنتج للجميع 🌀{name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
                 #bot.send_photo(chat_id, image_url, caption=caption, reply_markup=markup, parse_mode='Markdown')
