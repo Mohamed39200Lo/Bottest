@@ -35,7 +35,12 @@ pending_messages = {}
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     try:
-        welcome_text = "مرحبا بك في مؤسسة النجاح 📝\nأرسل رسالتك وسوف نقوم بالرد عليك في أقرب وقت."
+        welcome_text = """إدارة مدرستي ترحب بكم
+
+نسعد بتواصلكم معنا
+للاقتراحات
+للشكاوى
+للمشاكل المتعلقة بموقع وتطبيق مدرستي"""
         bot.send_message(message.chat.id, welcome_text)
     except Exception as e:
         print(f"Error in send_welcome: {e}")
