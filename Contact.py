@@ -4,7 +4,7 @@ import requests
 from flask import Flask
 from threading import Thread
 
-API_TOKEN = '1734988648:AAFrOU8PxO5KGSLxyree2YG4bt_WCRa02kQ'
+API_TOKEN = '7574811270:AAGwwen8Q5LHxdGVkMXQ8CgHsxhSf6auoAs'
 ADMIN_ID = 216924786  # استبدل ID الادمن هنا
 
 bot = telebot.TeleBot(API_TOKEN)
