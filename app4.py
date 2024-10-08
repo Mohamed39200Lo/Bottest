@@ -128,7 +128,7 @@ def check_availability():
                 caption2 = f"المنتج نفذ 🔴{name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
                 
                 for chat_id in chat_ids:
-                    bot.send_photo(chat_id, image_url, caption=caption2, reply_markup=markup, parse_mode='Markdown')
+                    bot.send_photo(chat_id, image_url, caption=caption2)
               
 
         update_pinned_message(product_statuses)
