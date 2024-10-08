@@ -125,6 +125,11 @@ def check_availability():
                 notified_products.add(name)
             elif not is_available and name in notified_products:
                 notified_products.remove(name)
+                caption2 = f"المنتج نفذ 🔴{name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
+                
+                for chat_id in chat_ids:
+                    bot.send_photo(chat_id, image_url, caption=caption2, reply_markup=markup, parse_mode='Markdown')
+              
 
         update_pinned_message(product_statuses)
 
