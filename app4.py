@@ -125,6 +125,12 @@ def check_availability():
                 notified_products.add(name)
             elif not is_available and name in notified_products:
                 notified_products.remove(name)
+                markup = InlineKeyboardMarkup()
+                markup.row_width = 1
+                markup.add(
+                    InlineKeyboardButton("نفذ المنتج 🔴",url=link),
+                    
+                )
                 caption2 = f"المنتج نفذ 🔴{name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
                 
                 for chat_id in chat_ids:
