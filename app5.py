@@ -189,4 +189,4 @@ if __name__ == "__main__":
 
     while True:
         check_availability()
-        time.sleep(5)
+        time.sleep(8)
