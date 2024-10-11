@@ -178,8 +178,12 @@ def run_flask():
     app.run(host='0.0.0.0', port=8080)
 
 def run_telegram_bot():
-    bot.polling(none_stop=True)  # يبدأ الاستماع للتحديثات
-
+    while True:
+        try:
+            bot.polling(none_stop=True, timeout=60)  # timeout لتجنب التعليق الطويل
+        except Exception as e:
+            print(f"Error in bot polling: {e}", file=stderr)
+            time.sleep(5)  # تأخير قليل قبل المحاولة مرة أخرى
 if __name__ == "__main__":
     # تشغيل Flask و Telegram polling في خيوط منفصلة
     flask_thread = Thread(target=run_flask)
