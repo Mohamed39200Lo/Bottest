@@ -141,7 +141,7 @@ def check_availability():
                 
                 )
                 
-                caption = f"تم توافر المنتج {name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
+                caption = f"تم توافر المنتج {name}"
                 for chat_id in chat_ids:
                     bot.send_photo(chat_id, image_url, caption=caption, reply_markup=markup, parse_mode='Markdown')
                 notified_products.add(name)
@@ -153,7 +153,7 @@ def check_availability():
                     InlineKeyboardButton("نفذ المنتج 🔴",url=link),
                     
                 )
-                caption2 = f"المنتج نفذ 🔴{name}\n\nانظر الرسالة المثبتة لمعرفة جميع المنتجات المتوفرة حالياً 📌"
+                caption2 = f"المنتج نفذ 🔴{name}"
                 
                 for chat_id in chat_ids:
                     bot.send_photo(chat_id, image_url, caption=caption2, reply_markup=markup, parse_mode='Markdown')
