@@ -10,7 +10,7 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 chat_ids = ["-1002222132008","-1002443500870"] 
 
-API_TOKEN = '7433644739:AAEVxiKNqqjdwwCuoAOpxkW0WRpWcjEpc1c'
+API_TOKEN = '5785640650:AAE7X0gMz5bfwfT6fuOJtEG10_5BjC4iBmE'
 bot = telebot.TeleBot(API_TOKEN)
 
 app = Flask(__name__)
