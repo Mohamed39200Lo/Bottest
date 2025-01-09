@@ -32,7 +32,7 @@ def fetch_projects():
                 link = title_tag["href"]
                 project_id = link.split('/')[-1]  # استخراج معرف المشروع
                 
-                if "تجهيز" in title and project_id not in sent_projects:  # التحقق من الكلمة ومعرف المشروع
+                if "تليجرام" in title and project_id not in sent_projects:  # التحقق من الكلمة ومعرف المشروع
                     full_link = f"https://mostaql.com{link}"
                     message = f"📢 مشروع جديد متاح: {title}\nرابط المشروع: {full_link}"
                     send_telegram_notification(message)
