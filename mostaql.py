@@ -16,7 +16,7 @@ bot = telebot.TeleBot(API_TOKEN)
 sent_projects = set()
 
 # قائمة الكلمات المفتاحية
-keywords = ["تليجرام", "تلجرام", "تلقرام", "تيليجرام", "telegram"]
+keywords = ["تليجرام", "تلجرام", "تلقرام", "تيليجرام", "telegram","بوت","واتساب","الواتساب", "التليجرام","التيليجرام"]
 
 def fetch_projects():
     url = "https://mostaql.com/projects"  # رابط صفحة المشاريع
