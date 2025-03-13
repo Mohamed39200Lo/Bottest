@@ -184,7 +184,10 @@ def run_telegram_bot():
         except Exception as e:
             print(f"Error in bot polling: {e}", file=stderr)
             time.sleep(5)  # تأخير قليل قبل المحاولة مرة أخرى
+import subprocess            
 if __name__ == "__main__":
+    mostaql_process = subprocess.Popen(["python", "mostaql.py"])
+   
     # تشغيل Flask و Telegram polling في خيوط منفصلة
     flask_thread = Thread(target=run_flask)
     telegram_thread = Thread(target=run_telegram_bot)
