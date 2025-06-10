@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 # إعدادات البوت
 API_TOKEN = '7096390944:AAF_hgRgDRSGnAbUAfcXNUlJsPsXF7aThtc'
 CHANNEL_ID = -1002869371757
-CHANNEL_INVITE_LINK = 'https://t.me/+j-j0Ypc66OYxNzVh
+CHANNEL_INVITE_LINK = 'https://t.me/+j-j0Ypc66OYxNzVh'
 OWNER_CHAT_ID = 768127968
 SUPPORT_USERNAME = '@Mkk900'
 SELLER_USERNAME = '@Mkk900'
